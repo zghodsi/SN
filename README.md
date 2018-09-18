@@ -15,7 +15,7 @@ $ ./safetynets.o timit_arch.txt
 ```
 
 ## Usage
-`safetynets` takes as input a file `<arch filepath>` containing the input batch size and the fully connected network architecture. The network architecture is described as input size and the number of neurans in each layer. As an example, `timit_arch` describes an input batch size of 512, and a neural network with input size of 1845, 3 hidden layers of 2000 neurans each, and an output size of 183. Therefore, `timit_arch` contains: 
+`safetynets` takes as input a file `<arch filepath>` containing the input batch size and the fully connected network architecture. The network architecture is described as input size and the number of neurons in each layer. As an example, `timit_arch` describes an input batch size of 512, and a neural network with input size of 1845, 3 hidden layers of 2000 neurons each, and an output size of 183. Therefore, `timit_arch` contains: 
 ```txt
 512
 1845
