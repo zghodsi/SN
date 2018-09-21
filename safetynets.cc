@@ -292,7 +292,7 @@ runtime verify_bias(int d, int i, int L)
         S[i] = myMod(Vin[i]+B[i]);
 
     t = clock()-t;
-    double ut = ((double) t)/CLOCKS_PER_SEC;
+    double ut = (double)t/CLOCKS_PER_SEC;
     cout << "unverifiable time for bias = " << ut << endl;
 
     uint64* r = (uint64*) calloc(d, sizeof(uint64));
@@ -325,7 +325,7 @@ runtime verify_bias(int d, int i, int L)
     t = clock() - t;
     if (i!=L-1)
         t+=otime;
-    double pt = ((double) t)/CLOCKS_PER_SEC;
+    double pt = (double)t/CLOCKS_PER_SEC;
     cout << "additional prover time = " << pt << endl;
 
     // assertion about the input of this layer returned by the prover (output of mm mult layer)
@@ -353,7 +353,7 @@ runtime verify_bias(int d, int i, int L)
     t = clock() - t;
     if (i==L-1)
         t += otime;
-    double vt = ((double)t)/CLOCKS_PER_SEC;
+    double vt = (double)t/CLOCKS_PER_SEC;
     cout << "verifier time = " << vt << endl;
 
  
@@ -458,7 +458,8 @@ runtime verify_mm(int e, int d, int f, int i, int L)
             }
         }
     }
-    double ut = ((double) clock()-t)/CLOCKS_PER_SEC;
+    t=clock()-t;
+    double ut = (double)t/CLOCKS_PER_SEC;
     cout << "unverifiable time for matrix-matrix mult = " << ut << endl;
 
     uint64 a1=0;    //ai-1
@@ -477,7 +478,7 @@ runtime verify_mm(int e, int d, int f, int i, int L)
 
     sum_check_mm(V, V+ m*n, d, e, f, m*n, n*p, r, F, z, check);
     t = clock()-t;
-    double pt = ((double) t)/CLOCKS_PER_SEC;
+    double pt = (double)t/CLOCKS_PER_SEC;
     cout << "additional P time = " << pt << endl;
 
     // set the high order of values to be those of corresponding to index i, and the low order values of z to be those corresponding to index k
@@ -516,7 +517,7 @@ runtime verify_mm(int e, int d, int f, int i, int L)
     if (i==0)
         t += itime;
 
-    double vt = ((double) t)/CLOCKS_PER_SEC;
+    double vt = (double)t/CLOCKS_PER_SEC;
     cout << "verifier time = " << vt << endl;
         
     free(V);
@@ -645,7 +646,7 @@ runtime verify_sqr_activation(int d)
     for (int i=0; i<n; i++)
         A[i] = myModMult(Vin[i],Vin[i]);
     t = clock()-t;
-    double ut = (double)((double) t)/CLOCKS_PER_SEC;
+    double ut = (double)t/CLOCKS_PER_SEC;
     cout << "unverifiable time for sqr activation = " << ut << endl;
 
     uint64* r = (uint64*) calloc(d, sizeof(uint64));
@@ -672,7 +673,7 @@ runtime verify_sqr_activation(int d)
 
     sum_check_sqr_activation(q, r, d, n, Iin, I_t, Vin, V_t, K_t, F, check);
     t = clock() - t;
-    double pt = ((double) t)/CLOCKS_PER_SEC;
+    double pt = (double)t/CLOCKS_PER_SEC;
     cout << "additional prover time = " << pt << endl;
 
     // assertion about the input of this layer returned by the prover (output of bias layer)
@@ -696,7 +697,7 @@ runtime verify_sqr_activation(int d)
         cout << "square activation layer last check failed" << endl, exit(1);
 
     v_t = clock() - v_t;
-    double vt = (double)((double)v_t)/CLOCKS_PER_SEC;
+    double vt = (double)v_t/CLOCKS_PER_SEC;
     cout << "verifier time = " << vt << endl;
 
     free(Vin);
