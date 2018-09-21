@@ -266,12 +266,12 @@ runtime verify_bias(int d, int i, int L)
   //inputs to activation layer
     uint64* Vin = (uint64*) malloc(n*sizeof(uint64));
     for (int i=0; i<n; i++)
-        Vin[i] = rand() % 100;
+        Vin[i] = abs(rand()) % 100;
 
     //activations
     uint64* B = (uint64*) malloc(n*sizeof(uint64));
     for (int i=0; i<n; i++)
-        B[i] = rand() % 100;
+        B[i] = abs(rand()) % 100;
 
     //Iin values
     uint64* Iin = (uint64*) malloc(n*sizeof(uint64));
@@ -299,14 +299,14 @@ runtime verify_bias(int d, int i, int L)
    // r is Vin's random coin tosses for this iteration.
     // really should choose r <--F_p, but this chooses r <-- [2^32]
     for (int i=0; i<d; i++)
-        r[i] = rand();
+        r[i] = abs(rand());
 
     // calculations of Fi(ri) for checking    
     uint64* check = (uint64*) calloc(d, sizeof(uint64));
    
     uint64* q = (uint64*) calloc(d, sizeof(uint64));
     for (int i=0; i<d; i++)
-        q[i] = rand();
+        q[i] = abs(rand());
     
     uint64 Ieval=0;
     uint64 Vieval=0;
@@ -382,7 +382,7 @@ void sum_check_mm(uint64* V0, uint64* V1, int d, int e, int f, int mi, int ni, u
         r[d+i] = z[i];
 
     for(int i = 0; i < d; i++)
-        r[i] = rand() + 3;
+        r[i] = abs(rand()) + 3;
 
     
     int num_terms = mi;
@@ -430,7 +430,7 @@ runtime verify_mm(int e, int d, int f, int i, int L)
 
     uint64* V = (uint64*) malloc((m*n+n*p)*sizeof(uint64));
     for(int i = 0; i < m*n+n*p; i++)
-        V[i] = rand() % 100;
+        V[i] = abs(rand()) % 100;
 
     uint64* C = (uint64*) calloc(m*p, sizeof(uint64));
 
@@ -440,7 +440,7 @@ runtime verify_mm(int e, int d, int f, int i, int L)
     uint64* r = (uint64*) calloc(f+d+e, sizeof(uint64));
 
     for(int i = 0; i < f+e; i++)
-        z[i] = rand()+3;
+        z[i] = abs(rand())+3;
 
     uint64** F = (uint64**) calloc((d), sizeof(uint64*));
     for(int i = 0; i < d; i++)
@@ -623,7 +623,7 @@ runtime verify_sqr_activation(int d)
     //inputs to activation layer
     uint64* Vin = (uint64*) malloc(n*sizeof(uint64));
     for (int i=0; i<n; i++)
-        Vin[i] = rand() % 100;
+        Vin[i] = abs(rand()) % 100;
 
     // table for V_tilda holding contributions of initial Vs at each round, updated every round
     uint64* V_t = (uint64*) calloc(n, sizeof(uint64));
@@ -652,14 +652,14 @@ runtime verify_sqr_activation(int d)
     // r is Vin's random coin tosses for this iteration.
     // really should choose r <--F_p, but this chooses r <-- [2^32]
     for (int i=0; i<d; i++)
-        r[i] = rand();
+        r[i] = abs(rand());
 
     // calculations of Fi(ri) for checking    
     uint64* check = (uint64*) calloc(d, sizeof(uint64));
 
     uint64* q = (uint64*) calloc(d,sizeof(uint64));
     for (int i=0; i<d; i++)
-        q[i] = rand();
+        q[i] = abs(rand());
 
     uint64 Ieval=0;
     uint64 Vieval=0;
