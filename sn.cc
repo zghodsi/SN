@@ -1,4 +1,4 @@
-// Implementation of the SafetyNets framework as described in https://arxiv.org/pdf/1706.10268.pdf.
+// Implementation of the framework as described in https://arxiv.org/pdf/1706.10268.pdf.
 // It is built upon Thaler's IP protocol for matrix-matrix multiplication available at 
 // http://people.cs.georgetown.edu/jthaler/Tcode.htm
 // This work is licensed under CC BY-NC-SA 3.0. Refer to the licesne file for more information.
